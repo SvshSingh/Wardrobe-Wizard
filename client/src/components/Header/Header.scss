@@ -1,0 +1,75 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0 100px !important;
+  padding: 9px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &__left, &__center, &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 40px;
+    margin-right: 2rem;
+  }
+
+  &__list-item {
+    font-family: $font;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.5rem 0;
+    cursor: pointer;
+
+    &:hover {
+      color: #ff3e6c;
+    }
+
+    &.active {
+      border-bottom: 2px solid #ff3e6c;
+    }
+  }
+
+  &__search {
+    width: 250px;
+    padding: 0.5rem 1rem;
+    border: 0.1px solid #e0e0e0 !important; 
+    border-radius: 2px;
+    outline: none !important;
+
+    &:focus {
+      border-color: #ff3e6c;
+    }
+  }
+
+  &__icon {
+    font-family: $font;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 0.5rem;
+    }
+
+    &:hover {
+      color: #ff3e6c;
+    }
+  }
+}
+
+.wizard {
+  color: #ff3e6c;
+}
