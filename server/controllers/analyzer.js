@@ -49,7 +49,7 @@ const analyzer = async (req, res) => {
     res.status(200).json(response.choices[0]);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: `Error calling gpt4 api: ${error}` });
+    res.status(500).json({ message: `Error calling gpt4o api: ${error}` });
   }
 };
 
