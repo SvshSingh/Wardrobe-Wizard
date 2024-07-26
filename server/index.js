@@ -11,9 +11,10 @@ const path = require("path");
 // const staticPath = path.join(__dirname, "/pictures");
 
 app.use(cors({
-  origin: ["http://localhost:3000", 'https://wardrobe-wizard-dj4o8nodd-svshsinghs-projects.vercel.app/'],
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true,
+  origin: true,
+  methods: ["GET","POST","PUT","DELETE"],
+  
+  // credentials: true,
 }))
 app.use(fileUpload()); //default filesize is 1mb
 // max size for the request body is 1mb
