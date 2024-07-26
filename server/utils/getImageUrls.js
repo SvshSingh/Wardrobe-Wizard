@@ -2,8 +2,8 @@ const path = require("path");
 const fs = require("fs");
 
 const publicDirectory = path.join(__dirname, "../../client/public/images");
-const baseUrl = "http://localhost:8000/public/images";
-
+// const baseUrl = "http://localhost:8000/public/images";
+const baseUrl = "https://wardrobewizardserver-ku26wyv5g-svshsinghs-projects.vercel.app/public/images"
 function getImageUrls(directory, baseUrl, callback) {
   fs.readdir(directory, (err, files) => {
     if (err) {
