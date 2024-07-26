@@ -11,7 +11,7 @@ const path = require("path");
 // const staticPath = path.join(__dirname, "/pictures");
 
 app.use(cors({
-  "origin": ["http://localhost:3000", 'https://wardrobe-wizard-dj4o8nodd-svshsinghs-projects.vercel.app/'],
+  origin: ["http://localhost:3000", 'https://wardrobe-wizard-dj4o8nodd-svshsinghs-projects.vercel.app/'],
   methods: "GET,POST,PUT,DELETE",
   credentials: true,
 }))
