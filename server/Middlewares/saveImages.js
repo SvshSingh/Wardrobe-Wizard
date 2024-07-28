@@ -3,11 +3,17 @@ const path = require("path");
 
 const saveImages = (req, res, next) => {
   const messages = [];
+  const uploadDir = '/tmp/uploads';
+
+  // Ensure the /tmp/uploads directory exists
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+
   const errorOccurred = Object.keys(req.files).some((key) => {
     const file = req.files[key];
     const filePath = path.join(
-      __dirname,
-      "../tmp/uploads",
+      uploadDir,
       `${key}.${file.mimetype.split("/")[1]}`
     ); // Save with the correct extension
 
@@ -23,8 +29,9 @@ const saveImages = (req, res, next) => {
   });
 
   if (errorOccurred) {
-    res.status(500).send(messages.join("\n"));
+    return res.status(500).send(messages.join("\n"));
   }
+  res.status(200).send(messages.join("\n"));
   next();
 };
 
