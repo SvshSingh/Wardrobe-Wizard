@@ -87,7 +87,7 @@ const StartStyling = ({ style, setStyle, response, setResponse, images }) => {
             "Content-Type":"application/json",
         },
     };
-      const apiResponse = await axios.post(`${base_url}/clothes`, formData); // send formData to api
+      const apiResponse = await axios.post(`https://wardrobewizardserver-svshsinghs-projects.vercel.app/api/clothes`, formData); // send formData to api
       setResponse(apiResponse.data.message.content);
       setRequest(false); // Reset request state
       setApiCallFinished(true); // Indicate API call is finished
