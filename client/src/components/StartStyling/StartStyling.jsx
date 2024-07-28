@@ -80,7 +80,7 @@ const StartStyling = ({ style, setStyle, response, setResponse, images }) => {
       formDataKeys.push(`image${index}`);
     });
     formData.append("style", style);
-
+  
     try {
       await storeImages(images, formDataKeys); // store images in IndexedDB
       const config = {
@@ -89,14 +89,14 @@ const StartStyling = ({ style, setStyle, response, setResponse, images }) => {
         },
       };
       const apiResponse = await axios.post(`https://wardrobewizardserver-svshsinghs-projects.vercel.app/api/clothes`, formData, config); // send formData to api
-      console.log(apiResponse);
-
-      if (apiResponse.data && apiResponse.data.message && apiResponse.data.message.content) {
-        setResponse(apiResponse.data.message.content);
+      console.log("API Response:", apiResponse);
+  
+      if (apiResponse.data && apiResponse.data.someExpectedField) { // Update this line based on the actual structure
+        setResponse(apiResponse.data.someExpectedField);
       } else {
         setErrors({ api: "Unexpected API response structure. Please try again." });
       }
-
+  
       setRequest(false); // Reset request state
       setApiCallFinished(true); // Indicate API call is finished
     } catch (error) {
@@ -104,6 +104,7 @@ const StartStyling = ({ style, setStyle, response, setResponse, images }) => {
       setErrors({ api: `${error.message}. Please try again.` });
     }
   };
+  
 
   return (
     <div className="style">
