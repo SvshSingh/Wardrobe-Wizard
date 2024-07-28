@@ -3,7 +3,7 @@ const path = require("path");
 
 const saveImages = (req, res, next) => {
   const messages = [];
-  const uploadDir = '../uploads';
+  const uploadDir = '/tmp/uploads';
 
   // Ensure the /tmp/uploads directory exists
   if (!fs.existsSync(uploadDir)) {

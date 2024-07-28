@@ -87,7 +87,7 @@ const StartStyling = ({ style, setStyle, response, setResponse, images }) => {
           "Content-Type": "multipart/form-data",
         },
       };
-      const apiResponse = await axios.post(`https://wardrobewizardserver-svshsinghs-projects.vercel.app/api/clothes`, formData,config); // send formData to api
+      const apiResponse = await axios.post(`https://wardrobewizardserver-svshsinghs-projects.vercel.app/api/clothes`, formData); // send formData to api
       console.log(apiResponse)
       setResponse(apiResponse.data.message.content);
       setRequest(false); // Reset request state
