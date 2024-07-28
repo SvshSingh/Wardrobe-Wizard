@@ -7,7 +7,7 @@ const saveImages = (req, res, next) => {
     const file = req.files[key];
     const filePath = path.join(
       __dirname,
-      "../uploads",
+      "../tmp/uploads",
       `${key}.${file.mimetype.split("/")[1]}`
     ); // Save with the correct extension
 
