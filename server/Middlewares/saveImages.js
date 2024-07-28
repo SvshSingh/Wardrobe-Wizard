@@ -3,23 +3,17 @@ const path = require("path");
 
 const saveImages = (req, res, next) => {
   const messages = [];
-  const uploadDir = '/tmp/uploads';
-
-  // Ensure the /tmp/uploads directory exists
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-  }
-
   const errorOccurred = Object.keys(req.files).some((key) => {
     const file = req.files[key];
     const filePath = path.join(
-      uploadDir,
+      __dirname,
+      "../uploads",
       `${key}.${file.mimetype.split("/")[1]}`
     ); // Save with the correct extension
 
     try {
       // Write the file directly instead of converting to base64
-      fs.writeFileSync(filePath, file.data);
+      fs.writeFileSync(path.resolve(filePath), file.data);
       messages.push(`${key} saved as an image file.`);
       return false; // No error, continue processing
     } catch (err) {
@@ -29,9 +23,8 @@ const saveImages = (req, res, next) => {
   });
 
   if (errorOccurred) {
-    return res.status(500).send(messages.join("\n"));
+    res.status(500).send(messages.join("\n"));
   }
-  res.status(200).send(messages.join("\n"));
   next();
 };
 
